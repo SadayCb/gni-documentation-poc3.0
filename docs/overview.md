@@ -2,54 +2,61 @@
 
 ## 1. Purpose
 
-`GAIA.LOAN_API` is a centralized Oracle PL/SQL service package that provides reusable business logic and technical functionality for loan management operations within the banking system.
+`GAIA.LOAN_API` is a shared Oracle PL/SQL service package that provides reusable business and technical functionality for loan processing across the banking system.
 
-The package supports core banking processes, including loan account management, financial calculations, payment schedule generation, payment processing, interest and penalty calculations, accounting journal entries, transaction history, and automated EOD/SOD operations.
+The supplied package specification and body cover loan account operations, balances, payment allocation, repayment schedules, interest and penalty calculations, overdue handling, credit limits and tranches, accounting journal entries, operation history, and automated processing associated with EOD/SOD.
 
-It serves as **shared business infrastructure** used by multiple banking modules and processes, rather than being associated with a single application screen or operation.
+The package should be treated as **shared business infrastructure**, not as the controller of a single application screen. Its public procedures, functions, and types form an interface used by other banking components.
 
-For detailed specifications of individual procedures and functions, refer to the [API Reference](api/loan-api.md).
+For method signatures and source-derived behavior, see the [Complete API Reference](api/loan-api.md).
 
 ## 2. Functional Areas
 
-The package contains public procedures and functions organized into the following functional areas:
+The public API is organized into the **same nine functional categories** used in the [API Reference](api/loan-api.md). Counts represent public declarations, including overloads as separate declarations.
 
-| Functional Area | Description |
-|:--|:--|
-| **Accounts & Balances** | Loan account creation, account status management, balance retrieval, credit limit evaluation, and related account operations. |
-| **EOD/SOD & Operations** | Automated daily banking operations, including loan controls, interest calculation, overdue processing, and automatic payments. |
-| **History & Changes** | Loan transaction history, additional operation information, data modification tracking, and reversal operations. |
-| **Interest & Penalties** | Interest calculation rules, overdue interest, penalty calculation bases, grace periods, and calculation date management. |
-| **Journal & Vouchers** | Accounting journal generation, debit/credit transactions, general ledger account mapping, and voucher-related operations. |
-| **Payments & Allocation** | Payment allocation, scheduled payment retrieval, payment distribution, and payment-related information processing. |
-| **Schedules & Rates** | Standard and annuity payment schedules, commission schedules, repayment dates, grace periods, and variable interest rate information. |
-| **Utilities & Configuration** | Supporting configuration and utility operations used by loan processing routines. |
+| Functional Area | Public Declarations | Description |
+|:--|--:|:--|
+| **Loan operations and controls** | 6 | Loan-operation support functions, caller identification, offer-related utilities, and loan control processing. |
+| **Accounts, guarantees and closure** | 8 | Loan account creation and features, account status changes, guarantee or collateral release, and loan closure operations. |
+| **Payments and balances** | 5 | Loan amount retrieval, payment allocation and detail assembly, and automated loan payment processing. |
+| **Payment schedules and dates** | 24 | Standard and annuity schedule generation, repayment dates, grace-period information, scheduled amounts, schedule checks, and adjustments. |
+| **Interest, penalties and rates** | 18 | Interest-calculation periods and bases, interest processing, penalty calculation, rate information, and related financial calculations or operations. |
+| **Delinquency and status** | 6 | Overdue date and threshold evaluation, delinquency transition decisions, and loan/account status handling. |
+| **Limits, tranches and overdrafts** | 4 | Credit limit evaluation, tranche creation, and overdraft-related operations. |
+| **Accounting and audit** | 9 | General-ledger mapping, journal entry generation and checking, voucher information, and change/audit support. |
+| **History, metadata and reversal** | 11 | Additional operation information, grouped metadata, operation history, and reversal of tracked changes. |
+| **Total** | **91** | **Public declarations, including overloaded variants.** |
 
-The complete list of public procedures and functions is available in the [API Reference](api/loan-api.md).
+These categories are **documentation navigation groups**, not isolated business modules. A method may participate in multiple processes even though it is documented under one primary category. For the complete method list, follow the [Public API Index](api/loan-api.md#public-api-index).
 
 ## 3. Technical Context
 
 | Component | Description |
 |:--|:--|
+| **Package** | `GAIA.LOAN_API` |
 | **Database Technology** | Oracle Database |
 | **Programming Language** | Oracle PL/SQL |
-| **Package Name** | `GAIA.LOAN_API` |
-| **Public Interface** | `LOAN_API` Package Specification |
-| **Implementation** | `LOAN_API` Package Body |
-| **Custom Data Types** | PL/SQL records and collections for loan accounts, accounting entries, additional information, and date lists. |
-| **Database Dependencies** | Loan, customer, account, payment schedule, transaction history, and accounting-related database objects. |
-| **External Dependencies** | Other Oracle PL/SQL packages, system configuration components, and database utilities. |
-| **Execution Context** | Banking transactions, loan operations, scheduled processes, and EOD/SOD execution. |
+| **Public Contract** | `LOAN_API` package specification: public procedures, functions, parameters, constants/state, and PL/SQL types. |
+| **Implementation** | `LOAN_API` package body: business conditions, SQL statements, dependent calls, and exception handling. |
+| **Public Data Types** | PL/SQL records and collections for loan accounts, journal entries, voucher fields, supplemental information, and date lists. |
+| **Related Data** | Loan master/detail data, customer/account data, payment plans, transactions, accounting records, and histories, as evidenced by the supplied code. |
+| **Integration** | Calls to other Oracle packages and database objects; some routines use Oracle database utilities. |
+| **Operational Context** | Interactive loan transactions, scheduled processing, and EOD/SOD banking operations. |
+| **Verification Scope** | Static examination of the supplied specification and body. Runtime results and implementations of external dependencies have not been independently verified. |
 
 ### Operational Considerations
 
-Some procedures perform financial operations, modify loan-related records, generate accounting entries, or update transaction history.
+Some public routines create or update accounts, modify payment plans, post accounting entries, process payments, or change loan-related records. Side effects and transaction behavior vary by method and should be reviewed in its individual API reference section.
 
-**Important:** Procedures that modify financial or operational data must be tested in an authorized development or testing environment before production execution.
+**Safety note:** Do not execute data-changing or financially sensitive examples against production without an approved test plan, appropriate authorization, and verified input identifiers.
 
-For further technical details, refer to:
+## 4. Related Documentation
 
-- [System Architecture](architecture.md)
-- [Business Workflows](workflows.md)
-- [Data Model](data-model.md)
-- [Technical Dependencies](reference/dependencies.md)
+- [Complete API Reference](api/loan-api.md) — public signatures, parameters, business logic, dependencies, and method-level notes.
+- [System Architecture](architecture.md) — package relationships and major component interactions.
+- [Business Workflows](workflows.md) — processing sequences and financial workflows.
+- [Data Model](data-model.md) — relevant database objects and operations.
+- [Error Handling](error-handling.md) — identifiable validation and exception behavior.
+- [Technical Dependencies](reference/dependencies.md) — dependent packages and database objects.
+- [Review Findings](reference/review-findings.md) — issues or assumptions requiring further review.
+- [Getting Started](guides/getting-started.md) — orientation for developers new to the package.
