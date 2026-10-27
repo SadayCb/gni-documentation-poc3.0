@@ -2,16 +2,25 @@
 
 ## 1. General
 
-| Field | Value |
-|---|---|
-| Document Name | GAIA.LOAN_API Technical and Business API Documentation |
-| Package Name | `GAIA.LOAN_API` |
-| Created Date | 2026-10-27 |
-| Created By | GNI Software Development Team |
-| Document Version | 1.0 (source-derived draft) |
-| Documentation Status | Static-analysis draft; requires business review |
-| Programming Language | Oracle PL/SQL |
-| Database Technology | Oracle Database |
+| Section | Item | Details / Reference |
+|:--|:--|:--|
+| **General** | Document Name | **LOAN_API — Technical & Functional Documentation** |
+| | Package Name | `GAIA.LOAN_API` |
+| | Created Date | 27 October 2026 |
+| | Created By | GNI Software — Development Team |
+| | Document Version | 1.0 — Draft |
+| | Documentation Status | Under Technical & Business Review |
+| | Technology | Oracle PL/SQL · Oracle Database |
+| **Introduction** | Purpose of the Document | [Purpose & Overview](docs/overview.md) — Package objectives, responsibilities and scope. |
+| | Scope of the Document | Public interfaces and verified implementation behavior. [Getting Started](docs/guides/getting-started.md) |
+| | System Architecture | [Architecture](docs/architecture.md) — Components, dependencies and execution flow. |
+| **API Specifications** | Procedures & Functions | [Complete API Reference](docs/api/loan-api.md) — Public procedures, functions and overloads. |
+| | Business Workflows | [Business Workflows](docs/workflows.md) — Loan operations, schedules, payments and EOD/SOD processes. |
+| | Technical Dependencies | [Dependencies](docs/reference/dependencies.md) — Related packages, procedures and functions. |
+| **Data Model** | Tables & Views | [Data Model](docs/data-model.md) — Related database objects and data operations. |
+| | Data Relationships | [Data Model & Relationships](docs/data-model.md) — Read/write interactions and dependencies. |
+| **Error Handling** | Errors & Exceptions | [Error Handling Reference](docs/error-handling.md) — Application errors, validation rules and exception handling. |
+| | Review Findings | [Technical Review Findings](docs/reference/review-findings.md) — Potential issues and unverified behavior. |
 
 ## 2. Introduction
 
