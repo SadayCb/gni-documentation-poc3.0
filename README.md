@@ -1,6 +1,6 @@
 # GAIA.LOAN_API — Technical Documentation
 
-## 1. General
+## 1. Documentation Overview
 
 | Section | Item | Details / Reference |
 |:--|:--|:--|
