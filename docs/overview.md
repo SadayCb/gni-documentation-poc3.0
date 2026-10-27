@@ -59,4 +59,4 @@ Some public routines create or update accounts, modify payment plans, post accou
 - [Error Handling](error-handling.md) — identifiable validation and exception behavior.
 - [Technical Dependencies](reference/dependencies.md) — dependent packages and database objects.
 - [Review Findings](reference/review-findings.md) — issues or assumptions requiring further review.
-- [Getting Started](guides/getting-started.md) — orientation for developers new to the package.
+- [Getting Started](getting-started.md) — orientation for developers new to the package.
