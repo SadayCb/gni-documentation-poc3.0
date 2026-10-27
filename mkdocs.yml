@@ -1,0 +1,16 @@
+site_name: GAIA.LOAN_API Documentation
+site_description: GNI Software — Oracle PL/SQL technical reference
+nav:
+  - Home: index.md
+  - Overview: overview.md
+  - Architecture: architecture.md
+  - Workflows: workflows.md
+  - Data model: data-model.md
+  - Errors: error-handling.md
+  - API reference: api/loan-api.md
+  - Getting started: guides/getting-started.md
+  - Dependencies: reference/dependencies.md
+  - Review findings: reference/review-findings.md
+markdown_extensions:
+  - tables
+  - fenced_code
