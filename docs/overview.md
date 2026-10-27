@@ -26,4 +26,4 @@ It should be treated as **shared business infrastructure**, not as a single scre
 - **Operational risk:** Several methods write or delete financial and audit data. Never execute examples against production without an approved test plan.
 
 
-[API reference](docs/api/loan-api.md)
+[API reference](api/loan-api.md)
